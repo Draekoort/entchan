@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENTchan - Little Retro Imageboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="window">
+    <div class="title-bar">
+      <span>ENTchan - Retro ENT Imageboard</span>
+      <button class="close-btn">X</button>
+    </div>
+    <div class="logo slide-in">ENTchan</div>
+    <div class="content">
+      <div class="tab-bar">
+        <div class="tab active" onclick="switchTab('forum')">Forum</div>
+        <div class="tab" onclick="switchTab('login')" id="login-tab-button">Login/Register</div>
+        <div class="tab" onclick="switchTab('settings')">Settings</div>
+      </div>
+      <div id="forum-tab">
+        <div id="forum-content">
+          <div id="thread-list-container" class="fade-in">
+            <h3>Threads</h3>
+            <ul class="thread-list" id="thread-list"></ul>
+            <div class="input-bar">
+              <button class="win98-btn" onclick="showNewThreadForm()">New Thread</button>
+            </div>
+            <div id="new-thread-form" class="hidden slide-in">
+              <input type="text" id="new-thread-title" placeholder="New thread title">
+              <textarea id="new-thread-body" placeholder="Thread content"></textarea>
+              <div class="input-bar">
+                <input type="text" id="thread-image-url" placeholder="Image URL (optional)">
+              </div>
+              <button class="win98-btn" onclick="addThread()">Create Thread</button>
+            </div>
+          </div>
+          <div id="thread-view" class="hidden fade-in">
+            <button class="win98-btn back-btn" onclick="showThreadList()">← Back to Threads</button>
+            <h3 id="thread-title"></h3>
+            <p id="thread-body"></p>
+            <img id="thread-image" src="" alt="Thread image" class="hidden" style="max-width: 100%; margin-top: 10px;">
+            <div id="comments"></div>
+            <div class="input-bar">
+              <input type="text" id="comment-input" placeholder="Enter your comment">
+              <button class="win98-btn" onclick="addComment()">Post Comment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="login-tab" class="hidden fade-in">
+        <div id="login-register-form" class="login-form">
+          <input type="text" id="username-input" placeholder="Username">
+          <input type="password" id="password-input" placeholder="Password">
+          <input type="password" id="confirm-password-input" placeholder="Confirm Password" class="hidden">
+          <button class="win98-btn" onclick="login()">Login</button>
+          <button class="win98-btn" onclick="showRegisterForm()">Register</button>
+          <button class="win98-btn hidden" id="register-btn" onclick="register()">Create Account</button>
+        </div>
+      </div>
+      <div id="settings-tab" class="hidden fade-in">
+        <h3>Settings</h3>
+        <div class="input-bar">
+          <label for="theme-select">Theme:</label>
+          <select id="theme-select" onchange="changeTheme()">
+            <option value="default">Default</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="status-bar">
+      <span id="user-status">User: Anonymous</span>
+      <span id="thread-count">Threads: 0</span>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
